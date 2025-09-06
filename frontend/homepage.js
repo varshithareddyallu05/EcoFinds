@@ -12,7 +12,7 @@ const HomePage = ({ onProductClick }) => {
     <div className="p-6">
       {/* Header */}
       <header className="flex justify-between items-center mb-6">
-        <h1 className="text-2xl font-bold">🛍️ ShopEasy</h1>
+        <h1 className="text-2xl font-bold">🛍️ EcoFinds</h1>
         <input
           type="text"
           placeholder="Search products..."
@@ -39,5 +39,6 @@ const HomePage = ({ onProductClick }) => {
     </div>
   );
 };
+
 
 export default HomePage;
