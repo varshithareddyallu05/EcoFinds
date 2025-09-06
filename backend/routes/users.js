@@ -1,21 +1,35 @@
 const express = require('express');
 const router = express.Router();
 
+const dummyUser = {
+    id: 'user123',
+    username: 'EcoWarrior',
+    email: 'test@example.com'
+};
+
 // POST /api/users/register
-// This route handles new user registration.
 router.post('/register', (req, res) => {
-  // In a real app, you'd save the user to a database.
-  // For now, we'll log the data from the frontend form.
   console.log('Register request body:', req.body);
-  res.json({ message: 'User registered successfully!' });
+  res.status(201).json({ message: 'User registered successfully!' });
 });
 
 // POST /api/users/login
-// This route handles user login.
 router.post('/login', (req, res) => {
   console.log('Login request body:', req.body);
-  // Send back a success message and a fake token for the frontend to use.
-  res.json({ message: 'User logged in successfully!', token: 'fake-jwt-token' });
+  res.json({ message: 'User logged in successfully!', token: 'fake-jwt-token-for-hackathon' });
 });
+
+// GET /api/users/me - Get the current user's profile
+router.get('/me', (req, res) => {
+    console.log("GET request for current user's profile");
+    res.json(dummyUser);
+});
+
+// PUT /api/users/me - Update the current user's profile
+router.put('/me', (req, res) => {
+    console.log("PUT request to update user's profile with data:", req.body);
+    res.json({ message: 'Profile updated successfully!', data: req.body });
+});
+
 
 module.exports = router;

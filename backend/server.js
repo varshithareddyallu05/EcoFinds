@@ -1,17 +1,18 @@
 const express = require('express');
-const cors = require('cors'); // Imports cors
+const cors = require('cors');
 
 const app = express();
 const port = 3001;
 
+// Import the route files
 const productRoutes = require('./routes/products');
 const userRoutes = require('./routes/users');
 
 // ## MIDDLEWARE ##
-app.use(cors()); // Allows your frontend to communicate with this server
-app.use(express.json()); // Allows your server to understand JSON data
+app.use(cors());
+app.use(express.json());
 
-// ## ROUTES ## (We'll add these next)
+// ## ROUTES ##
 app.use('/api/products', productRoutes);
 app.use('/api/users', userRoutes);
 
