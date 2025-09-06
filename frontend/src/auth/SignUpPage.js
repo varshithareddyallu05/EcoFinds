@@ -1,13 +1,32 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { ThemeContext } from "../ThemeContext";
 
 function SignUpPage() {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const { darkMode } = useContext(ThemeContext);
 
   return (
-    <div style={{ backgroundColor: "#f3f4f6", minHeight: "100vh", display: "flex", justifyContent: "center", alignItems: "center" }}>
-      <div style={{ backgroundColor: "white", padding: "2rem", borderRadius: "8px", width: "300px", boxShadow: "0 0 10px rgba(0,0,0,0.1)" }}>
+    <div
+      style={{
+        backgroundColor: darkMode ? "#111827" : "#f3f4f6",
+        minHeight: "100vh",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        color: darkMode ? "#f3f4f6" : "#111827"
+      }}
+    >
+      <div
+        style={{
+          backgroundColor: darkMode ? "#1f2937" : "white",
+          padding: "2rem",
+          borderRadius: "8px",
+          width: "300px",
+          boxShadow: "0 0 10px rgba(0,0,0,0.1)"
+        }}
+      >
         <h2 style={{ textAlign: "center", marginBottom: "1rem" }}>EcoFinds Sign Up</h2>
         <input
           type="text"
