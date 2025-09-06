@@ -1,5 +1,5 @@
 import React from "react";
-import ProductCard from "../components/ProductCard";
+import ProductCard from './productcard';
 
 const sampleProducts = [
   { id: 1, title: "Smartphone", price: 15000, category: "Electronics" },
