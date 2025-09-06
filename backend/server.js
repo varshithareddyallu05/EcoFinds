@@ -1,19 +1,17 @@
 const express = require('express');
-const cors = require('cors'); // Import cors
+const cors = require('cors'); // Imports cors
 
 const app = express();
 const port = 3001;
 
-// ## MIDDLEWARE ##
-// This section adds essential tools to your server
-app.use(cors()); // Enable CORS for all routes
-app.use(express.json()); // Allow server to accept incoming JSON data
+const productRoutes = require('./routes/products');
 
-// ## ROUTES ##
-// Your API endpoints will go here
-app.get('/api/test', (req, res) => {
-  res.json({ message: 'Backend is configured and running! 🚀' });
-});
+// ## MIDDLEWARE ##
+app.use(cors()); // Allows your frontend to communicate with this server
+app.use(express.json()); // Allows your server to understand JSON data
+
+// ## ROUTES ## (We'll add these next)
+app.use('/api/products', productRoutes);
 
 // ## START SERVER ##
 app.listen(port, () => {
