@@ -1,10 +1,21 @@
-import React from "react";
-import "./homepage.css";
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
-const ProductCard = ({ product, onClick }) => {
+const ProductCard = ({ product }) => {
+  const navigate = useNavigate();
+
+  const handleCardClick = () => {
+    navigate(`/product/${product.id}`);
+  };
+
   return (
-    <div className="product-card" onClick={onClick}>
-      <div className="image"><img src={product.image} alt=""></img></div>
+    // Use the class names from your team's CSS file
+    <div className="product-card" onClick={handleCardClick}>
+      {/* Your CSS uses a div with class "image" */}
+      <div className="image">
+        {/* You can put an <img> tag here later */}
+        Image Placeholder
+      </div>
       <h3>{product.title}</h3>
       <p>₹{product.price}</p>
     </div>
@@ -12,3 +23,4 @@ const ProductCard = ({ product, onClick }) => {
 };
 
 export default ProductCard;
+
