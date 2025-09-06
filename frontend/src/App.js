@@ -12,6 +12,9 @@ import SignUpPage from './auth/SignUpPage';
 import UserDashboard from './auth/UserDashboard';
 
 // You can move your navigation to its own component later
+
+
+
 function Navigation() {
   return (
     <nav style={{ padding: '1rem', background: '#eee', marginBottom: '1rem' }}>
@@ -25,6 +28,8 @@ function Navigation() {
     </nav>
   );
 }
+
+
 
 function App() {
   return (
