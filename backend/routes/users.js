@@ -1,41 +1,51 @@
 const express = require('express');
 const router = express.Router();
-const User = require('../models/User'); // Import the User model
+const User = require('../models/User');
+const bcrypt = require('bcryptjs'); // Import bcrypt
 
-// POST /api/users/register - Register a new user
+// POST /api/users/register - (This is already complete)
 router.post('/register', async (req, res) => {
   try {
     const { username, email, password } = req.body;
-
-    // Check if user already exists
     let user = await User.findOne({ email });
     if (user) {
       return res.status(400).json({ message: 'User already exists' });
     }
-
-    // Create a new user instance
-    user = new User({
-      username,
-      email,
-      password
-    });
-
-    // Save the user to the database (password will be hashed by the schema)
+    user = new User({ username, email, password });
     await user.save();
-    
-    // For now, just send a success message
     res.status(201).json({ message: 'User registered successfully!' });
-
   } catch (err) {
     console.error(err.message);
     res.status(500).send('Server error');
   }
 });
 
-// POST /api/users/login (We can add real logic here later)
-router.post('/login', (req, res) => {
-  console.log('Login request body:', req.body);
-  res.json({ message: 'User logged in successfully!', token: 'fake-jwt-token-for-hackathon' });
+// ---- NEW: Real Login Logic ----
+// POST /api/users/login
+router.post('/login', async (req, res) => {
+  try {
+    const { email, password } = req.body;
+
+    // 1. Find the user by their email
+    const user = await User.findOne({ email });
+    if (!user) {
+      return res.status(400).json({ message: 'Invalid credentials' });
+    }
+
+    // 2. Compare the submitted password with the hashed password in the database
+    const isMatch = await bcrypt.compare(password, user.password);
+    if (!isMatch) {
+      return res.status(400).json({ message: 'Invalid credentials' });
+    }
+
+    // 3. If passwords match, login is successful
+    // In a real app, you'd generate a JWT token here.
+    res.json({ message: 'Login successful!', token: 'fake-jwt-token-for-hackathon' });
+
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server error');
+  }
 });
 
 
