@@ -1,0 +1,148 @@
+/* styles.css */
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: #f4f9f9;
+  color: #333;
+}
+
+/* Header */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 32px;
+  background: teal;
+  color: white;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 24px;
+}
+
+header input {
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: none;
+  width: 250px;
+}
+
+/* Filters */
+.filters {
+  display: flex;
+  gap: 12px;
+  padding: 16px 32px;
+}
+
+.filters button {
+  background: #008080;
+  color: white;
+  padding: 8px 14px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.filters button:hover {
+  background: #006666;
+}
+
+/* Product grid */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 20px;
+  padding: 20px 32px;
+}
+
+/* Product card */
+.product-card {
+  background: rgb(0, 0, 0);
+  border-radius: 12px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  padding: 16px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.product-card .image {
+  background: #d1f2eb;
+  height: 140px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #555;
+}
+
+.product-card h3 {
+  margin-top: 12px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.product-card p {
+  color: teal;
+  font-weight: bold;
+}
+
+/* Product detail page */
+.product-detail {
+  padding: 32px;
+}
+
+.product-detail button.back {
+  background: none;
+  border: none;
+  color: teal;
+  cursor: pointer;
+  margin-bottom: 16px;
+}
+
+.detail-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.detail-image {
+  background: #d1f2eb;
+  height: 250px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.detail-info h2 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.detail-info p.price {
+  font-size: 20px;
+  font-weight: bold;
+  color: green;
+  margin-bottom: 12px;
+}
+
+.detail-info button {
+  background: teal;
+  color: white;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.detail-info button:hover {
+  background: #006666;
+}

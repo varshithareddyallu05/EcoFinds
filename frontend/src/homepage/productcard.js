@@ -1,16 +1,12 @@
 import React from "react";
+import "./homepage.css";
 
 const ProductCard = ({ product, onClick }) => {
   return (
-    <div 
-      className="bg-white rounded-2xl shadow-md p-4 cursor-pointer hover:shadow-lg transition"
-      onClick={onClick}
-    >
-      <div className="w-full h-40 bg-gray-200 rounded-xl flex items-center justify-center">
-        <span className="text-gray-500">Image</span>
-      </div>
-      <h3 className="mt-3 text-lg font-semibold">{product.title}</h3>
-      <p className="text-gray-600">₹{product.price}</p>
+    <div className="product-card" onClick={onClick}>
+      <div className="image"><img src={product.image} alt=""></img></div>
+      <h3>{product.title}</h3>
+      <p>₹{product.price}</p>
     </div>
   );
 };
